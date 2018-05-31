@@ -22,4 +22,4 @@ echo "]," >> /opt/xmr-stak/nvidia.txt
 
 echo "Starting miner"
 
-/usr/local/bin/xmr-stak --url ${STRATUM} --rigid ${MINER_NAME} --user ${WALLET} --pass ${PASSWORD} --currency ${CURRENCY}
+/usr/local/bin/xmr-stak --url ${STRATUM} --rigid ${MINER_ID} --user ${WALLET} --pass ${PASSWORD} --currency ${CURRENCY}

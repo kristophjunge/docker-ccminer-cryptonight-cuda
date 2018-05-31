@@ -2,9 +2,6 @@ FROM nvidia/cuda:9.0-base
 
 MAINTAINER Kristoph Junge <kristoph.junge@gmail.com>
 
-ENV GIT_REPOSITORY https://github.com/fireice-uk/xmr-stak.git
-ENV XMRSTAK_CMAKE_FLAGS -DXMR-STAK_COMPILE=generic -DCUDA_ENABLE=ON -DOpenCL_ENABLE=OFF
-
 RUN mkdir -p /opt/xmr-stak
 WORKDIR /opt/xmr-stak
 
@@ -13,10 +10,10 @@ COPY ./src/donate-level.hpp /tmp/donate-level.hpp
 
 RUN apt-get update && \
     apt-get install -qq --no-install-recommends -y build-essential ca-certificates cmake cuda-core-9-0 git cuda-cudart-dev-9-0 libhwloc-dev libmicrohttpd-dev libssl-dev && \
-    git clone $GIT_REPOSITORY /opt/xmr-stak-build && \
+    git clone https://github.com/fireice-uk/xmr-stak.git /opt/xmr-stak-build && \
     mv /tmp/donate-level.hpp /opt/xmr-stak-build/xmrstak/donate-level.hpp && \
     cd /opt/xmr-stak-build && \
-    cmake ${XMRSTAK_CMAKE_FLAGS} . && \
+    cmake -DXMR-STAK_COMPILE=generic -DCUDA_ENABLE=ON -DOpenCL_ENABLE=OFF . && \
     make && \
     cd - && \
     mv /opt/xmr-stak-build/bin/* /usr/local/bin/ && \

@@ -5,15 +5,13 @@ services:
     container_name: xmrstak
     build: .
     environment:
-      MINER_NAME: "${MINER_NAME}"
-      STARTUP_DELAY: "${STARTUP_DELAY}"
-      STRATUM: "${STRATUM}"
-      WALLET: "${WALLET}"
-      PASSWORD: "${PASSWORD}"
-      CURRENCY: "${CURRENCY}"
-      THREADS: "${THREADS}"
-      BLOCKS: "${BLOCKS}"
+      MINER_ID: ${MINER_ID}
+      STARTUP_DELAY: ${STARTUP_DELAY}
+      STRATUM: ${STRATUM}
+      WALLET: ${WALLET}
+      PASSWORD: ${PASSWORD}
+      CURRENCY: ${CURRENCY}
+      THREADS: ${THREADS}
+      BLOCKS: ${BLOCKS}
     ports:
       - "8080:8080"
-    volumes:
-      - "/var/log/xmr-stak.log:/var/log/xmr-stak.log"
