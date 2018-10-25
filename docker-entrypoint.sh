@@ -15,7 +15,7 @@ echo "\"gpu_threads_conf\" :" > /opt/xmr-stak/nvidia.txt
 echo "[" >> /opt/xmr-stak/nvidia.txt
 nvidia-smi --query-gpu=index --format=csv,noheader | while read INDEX
 do
-  echo "{ \"index\" : ${INDEX}, \"threads\" : ${THREADS}, \"blocks\" : ${BLOCKS}, \"bfactor\" : 0, \"bsleep\" :  0, \"affine_to_cpu\" : false, \"sync_mode\" : 3, }," >> /opt/xmr-stak/nvidia.txt
+  echo "{ \"index\" : ${INDEX}, \"threads\" : ${THREADS}, \"blocks\" : ${BLOCKS}, \"bfactor\" : ${BFACTOR}, \"bsleep\" : ${BSLEEP}, \"affine_to_cpu\" : false, \"sync_mode\" : 3, \"mem_mode\" : 1, }," >> /opt/xmr-stak/nvidia.txt
   echo "Enabled GPU ${INDEX}"
 done
 echo "]," >> /opt/xmr-stak/nvidia.txt
